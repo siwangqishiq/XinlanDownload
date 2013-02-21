@@ -32,6 +32,7 @@ public final class R {
         public static final int main_button_download=0x7f050004;
         public static final int main_edit_text=0x7f050005;
         public static final int menu_settings=0x7f050002;
+        public static final int test_content=0x7f050006;
         public static final int title_activity_main=0x7f050003;
     }
     public static final class style {
