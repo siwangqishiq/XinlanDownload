@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import android.os.AsyncTask;
 import android.os.Environment;
 
 public class DownFile {
@@ -15,6 +16,7 @@ public class DownFile {
 	private int downThreadNum = 3;
 	private int filesize;
 	private String filename;
+	private int cur_size;
 	
 	public DownFile(String url) {
 		this.downloadURL = url;
@@ -26,7 +28,6 @@ public class DownFile {
 			URL url = new URL(downloadURL);
 			URLConnection con = url.openConnection();
 			filesize = con.getContentLength();// 获取资源大小
-			// System.out.println("size--->"+filesize);
 			String path=getSDPath()+File.separator+FOLDER;
 			initFolder(path);
 			writeToDisc(path+File.separator+filename);
@@ -54,8 +55,14 @@ public class DownFile {
 			return 0;
 		}
 		//TODO
+		
 		return 0;
 	}
+	
+	public synchronized int updateProgress(){
+		return (int)((cur_size/filesize)*100);
+	}
+	
 	/**
 	 * 获取SD卡目录
 	 * @return
@@ -77,4 +84,16 @@ public class DownFile {
 		}
 		return url;
 	}
+	
+	private class DownloadThread extends Thread{
+		@Override
+		public void run(){
+			try {
+				URL url=new URL(downloadURL);
+				
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+		}
+	}//end inner class
 }// end class

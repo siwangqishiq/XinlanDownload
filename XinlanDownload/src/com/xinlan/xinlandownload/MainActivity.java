@@ -1,5 +1,6 @@
 package com.xinlan.xinlandownload;
 
+
 import com.xinlan.xinlandownload.components.DownFile;
 
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import android.app.Activity;
 
 /**
@@ -48,8 +50,17 @@ public class MainActivity extends Activity {
 		@Override
 		protected Integer doInBackground(String... params) {
 			DownFile task=new DownFile(params[0]);
-			task.doDownload();
-			return null;
+			
+			//task.doDownload();
+//			for(int i=0;i<100;i++){
+//				publishProgress(i);
+//				try {
+//					Thread.sleep(10);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+			return 0;
 		}
 
 		@Override
@@ -59,12 +70,12 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(Integer result) {
-			
+			Toast.makeText(MainActivity.this, "下载完成", Toast.LENGTH_LONG).show();
 		}
 
 		@Override
 		protected void onProgressUpdate(Integer... values) {
-			super.onProgressUpdate(values);
+			mBar.setProgress(values[0]);
 		}
     }//end DownTask class
 }//end class
