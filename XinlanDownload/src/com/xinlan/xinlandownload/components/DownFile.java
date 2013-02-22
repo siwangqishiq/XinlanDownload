@@ -57,4 +57,12 @@ public class DownFile {
 		}
 		return sdDir.toString();
 	}
+	
+	public static String getFilenameFromUrl(String url){
+		int start=url.lastIndexOf("/");
+		if(start!=-1){
+			return url.substring(start+1);
+		}
+		return url;
+	}
 }// end class
