@@ -10,13 +10,15 @@ import android.os.Environment;
 
 public class DownFile {
 	public static final String FOLDER = "xldownload";
-
+	
 	private String downloadURL;
 	private int downThreadNum = 3;
 	private int filesize;
-
+	private String filename;
+	
 	public DownFile(String url) {
 		this.downloadURL = url;
+		filename=getFilenameFromUrl(url);
 	}
 
 	public void doDownload() {
@@ -27,6 +29,7 @@ public class DownFile {
 			// System.out.println("size--->"+filesize);
 			String path=getSDPath()+File.separator+FOLDER;
 			initFolder(path);
+			writeToDisc(path+File.separator+filename);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,6 +46,15 @@ public class DownFile {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private int writeToDisc(String filepath){
+		File file=new File(filepath);
+		if(file.exists()){
+			return 0;
+		}
+		//TODO
+		return 0;
 	}
 	/**
 	 * 获取SD卡目录
