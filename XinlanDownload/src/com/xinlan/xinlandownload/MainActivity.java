@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.app.Activity;
 
 /**
@@ -17,6 +18,7 @@ public class MainActivity extends Activity {
 	private Button mDownloadBtn;
 	private EditText mText;
 	private DownTask mTask;
+	private ProgressBar mBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class MainActivity extends Activity {
     private void init(){
     	mText = (EditText)findViewById(R.id.url_content);
     	mDownloadBtn=(Button)findViewById(R.id.doDownBtn);
+    	mBar=(ProgressBar)findViewById(R.id.progressBar);
     	mDownloadBtn.setOnClickListener(new BtnClick());
     }
     

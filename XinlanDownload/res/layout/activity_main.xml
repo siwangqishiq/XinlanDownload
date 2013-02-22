@@ -25,4 +25,13 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/main_button_download" 
 	    />
+	
+	<ProgressBar
+	    android:layout_alignParentBottom="true"
+	    android:id="@+id/progressBar"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="10dp"
+	    style="?android:attr/progressBarStyleHorizontal" 
+	    />
 </RelativeLayout>
